@@ -33,11 +33,6 @@ export default function Home() {
       ikon: "❋",
     },
     {
-      isim: "CO2 Carboxy Terapi",
-      aciklama: "Karbondioksit gazı ile uygulanan yenilikçi terapi yöntemi. Cilt yenileme ve sıkılaştırma.",
-      ikon: "◉",
-    },
-    {
       isim: "Kaş Laminasyonu",
       aciklama: "Kaşlarınıza doğal ve dolgun bir görünüm kazandıran laminasyon işlemi ile mükemmel kaşlara sahip olun.",
       ikon: "⌘",
@@ -178,7 +173,7 @@ export default function Home() {
           position: fixed;
           top: 0; left: 0; right: 0; bottom: 0;
           background: var(--black);
-          z-index: 99;
+          z-index: 101; /* Düzeltme: nav barın (100) üstünde kalması için 101 yapıldı */
           flex-direction: column;
           align-items: center;
           justify-content: center;
@@ -759,9 +754,9 @@ export default function Home() {
               </p>
               <div className="divider" />
               {[
-                { ikon: "✦", baslik: "Uzman Kadro", aciklama: "Alanında deneyimli, sertifikalı güzellik uzmanlarımızla güvende olun." },
-                { ikon: "◈", baslik: "Son Teknoloji", aciklama: "En güncel cihazlar ve tekniklerle üstün sonuçlar elde ediyoruz." },
-                { ikon: "❋", baslik: "Kişiye Özel", aciklama: "Her müşterimize özel bakım programı hazırlıyor, bireysel ihtiyaçları gözetiyoruz." },
+                { ikon: "✿", baslik: "Uzman Kadro", aciklama: "Alanında deneyimli, sertifikalı güzellik uzmanlarımızla güvende olun." },
+                { ikon: "✿", baslik: "Balıkesir'de İlk ve Tek", aciklama: "Falcon 4 Pro lazer epilasyon cihazları ve dahası" },
+                { ikon: "✿", baslik: "Kişiye Özel Bakım & Uygulamalar", aciklama: "Hydra , Pumbak , Co2 gibi cildinize özel bakımlar" },
               ].map((o) => (
                   <div key={o.baslik} className="ozellik">
                     <div className="ozellik-ikon">{o.ikon}</div>
@@ -822,7 +817,13 @@ export default function Home() {
                 <div className="section-label" style={{marginBottom: "32px"}}>Randevu Formu</div>
                 <div className="randevu-form">
                   <input type="text" placeholder="Adınız Soyadınız" />
-                  <input type="tel" placeholder="Telefon Numaranız" />
+                  <input
+                      type="tel"
+                      placeholder="5xx xxx xx xx"
+                      onInput={(e) => {
+                        e.currentTarget.value = e.currentTarget.value.replace(/[^0-9]/g, '');
+                      }}
+                  />
                   <select>
                     <option value="">Hizmet Seçiniz</option>
                     {hizmetler.map((h) => (
