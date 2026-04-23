@@ -19,7 +19,7 @@ export default function Home() {
     },
     {
       isim: "Cilt Uygulamaları",
-      aciklama: "Cildinizi yenileyen profesyonel cilt bakım uygulamaları. Hydrafacial, dermapen ve daha fazlası.",
+      aciklama: "Cildinizi yenileyen profesyonel cilt bakım uygulamaları. Hydra, Pumbak , CO2 Carboxy , Akova bakımı ve daha fazlası.",
       ikon: "◈",
     },
     {
@@ -697,7 +697,7 @@ export default function Home() {
           <div className="hero-content">
             <div className="hero-badge">✦ Premium Güzellik Merkezi — Balıkesir</div>
             <h1 className="hero-title">
-              Güzelliğinize<br /><em>Değer Katıyoruz</em>
+              İçiniz Güzel Olsun<br /><em>Dışınızı Biz Hallederiz</em>
             </h1>
             <p className="hero-subtitle">Büşra Ak Güzellik</p>
             <p className="hero-desc">
