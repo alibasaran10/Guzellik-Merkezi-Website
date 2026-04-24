@@ -527,6 +527,7 @@ export default function Home() {
         }
 
         .hakkimizda-box {
+          width: 100%;
           aspect-ratio: 3/4;
           background: var(--black-card);
           border: 1px solid rgba(201,168,76,0.15);
@@ -600,7 +601,7 @@ export default function Home() {
           padding: 100px 60px;
           position: relative;
           overflow: hidden;
-          min-height: 520px;
+          min-height: 650px;
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -843,7 +844,7 @@ export default function Home() {
           }
           .cta-section {
             padding: 80px 24px;
-            min-height: 420px;
+            min-height: 480px;
           }
           .sosyal-linkler {
             gap: 8px;
@@ -947,7 +948,7 @@ export default function Home() {
                     src="/busraakguzellik-1.jpeg"
                     alt="Büşra Ak Güzellik Merkezi"
                     fill
-                    style={{ objectFit: "cover", objectPosition: "center top" }}
+                    style={{ objectFit: "cover", objectPosition: "center center" }}
                 />
               </div>
               <div className="hakkimizda-badge">
@@ -999,7 +1000,7 @@ export default function Home() {
               src="/busraakguzellik-2.jpeg"
               alt="Büşra Ak Güzellik"
               fill
-              style={{ objectFit: "cover", objectPosition: "center top" }}
+              style={{ objectFit: "cover", objectPosition: "center center" }}
           />
           <div className="cta-overlay" />
           <div className="cta-content">
@@ -1082,7 +1083,7 @@ export default function Home() {
                     WhatsApp
                   </a>
                   <a
-                      href="https://maps.app.goo.gl/vfZF9FutskackxqU6?g_st=iw"
+                      href="https://share.google/JsA2AlrmAmJdQHT14"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="sosyal-link"
@@ -1103,6 +1104,7 @@ export default function Home() {
                   <input
                       type="tel"
                       placeholder="5xx xxx xx xx"
+                      maxLength={10}
                       onInput={(e) => {
                         e.currentTarget.value = e.currentTarget.value.replace(/[^0-9]/g, '').slice(0, 10);
                       }}
