@@ -742,7 +742,7 @@ export default function Home() {
                 <div className="hakkimizda-box-inner">Güzellik<br />Sanatı</div>
               </div>
               <div className="hakkimizda-badge">
-                <div className="hakkimizda-badge-num">7/24</div>
+                <div className="hakkimizda-badge-num">7 Gün</div>
                 <div className="hakkimizda-badge-text">Hizmet<br />Anlayışı</div>
               </div>
             </div>
