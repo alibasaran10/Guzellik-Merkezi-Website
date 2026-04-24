@@ -1128,7 +1128,7 @@ export default function Home() {
                   <input
                       type="tel"
                       placeholder="05xx xxx xx xx"
-                      maxLength={10}
+                      maxLength={11}
                       value={formTel}
                       onChange={(e) => setFormTel(e.target.value)}
                       onInput={(e) => {
