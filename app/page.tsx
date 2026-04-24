@@ -830,6 +830,7 @@ export default function Home() {
           }
           .hakkimizda-visual {
             display: block;
+            width: 100%;
             max-width: 320px;
             margin: 0 auto;
           }
