@@ -6,7 +6,7 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // --- YENİ EKLENEN FORM STATELERİ ---
+  // --- FORM STATELERİ ---
   const [formAd, setFormAd] = useState("");
   const [formTel, setFormTel] = useState("");
   const [formHizmet, setFormHizmet] = useState("");
@@ -65,8 +65,8 @@ export default function Home() {
       return;
     }
 
-    const mesaj = `Merhaba, randevu almak istiyorum.%0A%0A*Ad Soyad:* ${formAd}%0A*Telefon:* ${formTel}%0A*İstenen Hizmet:* ${formHizmet || 'Belirtilmedi'}%0A*Not:* ${formNot || 'Yok'}`;
-    const whatsappUrl = `https://wa.me/905468794610?text=${mesaj}`;
+    const mesaj = `Merhaba, randevu almak istiyorum.\n\n*Ad Soyad:* ${formAd}\n*Telefon:* ${formTel}\n*İstenen Hizmet:* ${formHizmet || 'Belirtilmedi'}\n*Not:* ${formNot || 'Yok'}`;
+    const whatsappUrl = `https://wa.me/905468794610?text=${encodeURIComponent(mesaj)}`;
 
     window.open(whatsappUrl, '_blank');
   };
