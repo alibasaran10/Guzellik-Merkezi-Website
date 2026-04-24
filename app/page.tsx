@@ -1082,7 +1082,7 @@ export default function Home() {
                     WhatsApp
                   </a>
                   <a
-                      href="https://share.google/JsA2AlrmAmJdQHT14"
+                      href="https://maps.app.goo.gl/vfZF9FutskackxqU6?g_st=iw"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="sosyal-link"
