@@ -1104,7 +1104,7 @@ export default function Home() {
                       type="tel"
                       placeholder="5xx xxx xx xx"
                       onInput={(e) => {
-                        e.currentTarget.value = e.currentTarget.value.replace(/[^0-9]/g, '');
+                        e.currentTarget.value = e.currentTarget.value.replace(/[^0-9]/g, '').slice(0, 10);
                       }}
                   />
                   <select>
