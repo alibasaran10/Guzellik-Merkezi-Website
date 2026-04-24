@@ -899,7 +899,7 @@ export default function Home() {
           <div className="hero-bg" />
           <div className="hero-lines" />
           <div className="hero-content">
-            <div className="hero-badge">✦ Premium Güzellik Merkezi — Balıkesir</div>
+            <div className="hero-badge">✦ Premium Güzellik Merkezi — BALIKESİR</div>
             <h1 className="hero-title">
               İçiniz Güzel Olsun<br /><em>Dışınızı Biz Hallederiz</em>
             </h1>
