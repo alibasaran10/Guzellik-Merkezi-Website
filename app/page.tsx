@@ -45,7 +45,7 @@ export default function Home() {
       ikon: "⌘",
     },
     {
-      isim: "Kaş & Kirpik Liftingi",
+      isim: "Kaş & Kirpik Lifting",
       aciklama: "Kaş ve kirpiklerinizi şekillendiren lifting işlemi ile gözlerinize derinlik ve ifade katın.",
       ikon: "✿",
     },
@@ -58,7 +58,7 @@ export default function Home() {
     { href: "#iletisim", label: "İLETİŞİM" },
   ];
 
-  // --- YENİ EKLENEN WHATSAPP GÖNDERME FONKSİYONU ---
+  // ---  WHATSAPP GÖNDERME FONKSİYONU ---
   const randevuGonder = () => {
     if (!formAd || !formTel) {
       alert("Lütfen adınızı ve telefon numaranızı giriniz.");
@@ -1117,7 +1117,7 @@ export default function Home() {
                   Randevu Formu
                 </div>
 
-                {/* YENİLENEN RANDEVU FORMU ALANI */}
+                {/* RANDEVU FORMU ALANI */}
                 <div className="randevu-form">
                   <input
                       type="text"
@@ -1127,12 +1127,12 @@ export default function Home() {
                   />
                   <input
                       type="tel"
-                      placeholder="5xx xxx xx xx"
+                      placeholder="05xx xxx xx xx"
                       maxLength={10}
                       value={formTel}
                       onChange={(e) => setFormTel(e.target.value)}
                       onInput={(e) => {
-                        e.currentTarget.value = e.currentTarget.value.replace(/[^0-9]/g, '').slice(0, 10);
+                        e.currentTarget.value = e.currentTarget.value.replace(/[^0-9]/g, '').slice(0, 11);
                       }}
                   />
                   <select value={formHizmet} onChange={(e) => setFormHizmet(e.target.value)}>
