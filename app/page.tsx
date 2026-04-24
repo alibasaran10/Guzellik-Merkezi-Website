@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -56,7 +57,11 @@ export default function Home() {
         <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
 
         :root {
           --gold: #C9A84C;
@@ -70,7 +75,9 @@ export default function Home() {
           --gray: #888880;
         }
 
-        html { scroll-behavior: smooth; }
+        html {
+          scroll-behavior: smooth;
+        }
 
         body {
           background: var(--black);
@@ -80,10 +87,12 @@ export default function Home() {
           overflow-x: hidden;
         }
 
-        /* NAV */
+        /* ── NAV ── */
         nav {
           position: fixed;
-          top: 0; left: 0; right: 0;
+          top: 0;
+          left: 0;
+          right: 0;
           z-index: 100;
           padding: 24px 60px;
           display: flex;
@@ -91,12 +100,14 @@ export default function Home() {
           justify-content: space-between;
           transition: all 0.4s ease;
         }
+
         nav.scrolled {
           background: rgba(10,10,10,0.95);
           backdrop-filter: blur(12px);
           padding: 16px 60px;
           border-bottom: 1px solid rgba(201,168,76,0.15);
         }
+
         .nav-logo {
           font-family: 'Cormorant Garamond', serif;
           font-size: 20px;
@@ -106,6 +117,7 @@ export default function Home() {
           text-decoration: none;
           text-transform: uppercase;
         }
+
         .nav-logo span {
           display: block;
           font-size: 11px;
@@ -114,11 +126,13 @@ export default function Home() {
           font-family: 'Montserrat', sans-serif;
           font-weight: 300;
         }
+
         .nav-links {
           display: flex;
           gap: 40px;
           list-style: none;
         }
+
         .nav-links a {
           color: var(--white-soft);
           text-decoration: none;
@@ -128,16 +142,26 @@ export default function Home() {
           transition: color 0.3s;
           position: relative;
         }
+
         .nav-links a::after {
           content: '';
           position: absolute;
-          bottom: -4px; left: 0;
-          width: 0; height: 1px;
+          bottom: -4px;
+          left: 0;
+          width: 0;
+          height: 1px;
           background: var(--gold);
           transition: width 0.3s;
         }
-        .nav-links a:hover { color: var(--gold); }
-        .nav-links a:hover::after { width: 100%; }
+
+        .nav-links a:hover {
+          color: var(--gold);
+        }
+
+        .nav-links a:hover::after {
+          width: 100%;
+        }
+
         .nav-phone {
           color: var(--gold);
           text-decoration: none;
@@ -148,10 +172,12 @@ export default function Home() {
           padding: 8px 20px;
           transition: all 0.3s;
         }
+
         .nav-phone:hover {
           background: var(--gold);
           color: var(--black);
         }
+
         .hamburger {
           display: none;
           flex-direction: column;
@@ -161,6 +187,7 @@ export default function Home() {
           border: none;
           padding: 4px;
         }
+
         .hamburger span {
           display: block;
           width: 24px;
@@ -168,18 +195,27 @@ export default function Home() {
           background: var(--gold);
           transition: all 0.3s;
         }
+
+        /* ── MOBİL MENU ── */
         .mobile-menu {
           display: none;
           position: fixed;
-          top: 0; left: 0; right: 0; bottom: 0;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
           background: var(--black);
-          z-index: 101; /* Düzeltme: nav barın (100) üstünde kalması için 101 yapıldı */
+          z-index: 101;
           flex-direction: column;
           align-items: center;
           justify-content: center;
           gap: 40px;
         }
-        .mobile-menu.open { display: flex; }
+
+        .mobile-menu.open {
+          display: flex;
+        }
+
         .mobile-menu a {
           color: var(--white);
           text-decoration: none;
@@ -188,18 +224,24 @@ export default function Home() {
           letter-spacing: 4px;
           transition: color 0.3s;
         }
-        .mobile-menu a:hover { color: var(--gold); }
+
+        .mobile-menu a:hover {
+          color: var(--gold);
+        }
+
         .mobile-close {
           position: absolute;
-          top: 24px; right: 30px;
+          top: 24px;
+          right: 30px;
           background: none;
           border: none;
           color: var(--gold);
           font-size: 28px;
           cursor: pointer;
+          z-index: 102;
         }
 
-        /* HERO */
+        /* ── HERO ── */
         .hero {
           min-height: 100vh;
           display: flex;
@@ -209,21 +251,24 @@ export default function Home() {
           overflow: hidden;
           background: var(--black);
         }
+
         .hero-bg {
           position: absolute;
           inset: 0;
-          background: 
+          background:
             radial-gradient(ellipse 60% 60% at 70% 50%, rgba(201,168,76,0.06) 0%, transparent 70%),
             radial-gradient(ellipse 40% 40% at 20% 80%, rgba(201,168,76,0.04) 0%, transparent 60%);
         }
+
         .hero-lines {
           position: absolute;
           inset: 0;
-          background-image: 
+          background-image:
             linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
             linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
           background-size: 80px 80px;
         }
+
         .hero-content {
           position: relative;
           z-index: 2;
@@ -231,6 +276,7 @@ export default function Home() {
           padding: 0 20px;
           max-width: 900px;
         }
+
         .hero-badge {
           display: inline-block;
           font-size: 10px;
@@ -241,6 +287,7 @@ export default function Home() {
           margin-bottom: 48px;
           text-transform: uppercase;
         }
+
         .hero-title {
           font-family: 'Cormorant Garamond', serif;
           font-size: clamp(52px, 8vw, 96px);
@@ -250,10 +297,12 @@ export default function Home() {
           color: var(--white);
           margin-bottom: 12px;
         }
+
         .hero-title em {
           font-style: italic;
           color: var(--gold);
         }
+
         .hero-subtitle {
           font-family: 'Cormorant Garamond', serif;
           font-size: clamp(28px, 4vw, 48px);
@@ -263,6 +312,7 @@ export default function Home() {
           margin-bottom: 40px;
           text-transform: uppercase;
         }
+
         .hero-desc {
           font-size: 13px;
           letter-spacing: 1px;
@@ -271,12 +321,14 @@ export default function Home() {
           max-width: 500px;
           margin: 0 auto 56px;
         }
+
         .hero-btns {
           display: flex;
           gap: 16px;
           justify-content: center;
           flex-wrap: wrap;
         }
+
         .btn-gold {
           background: var(--gold);
           color: var(--black);
@@ -289,7 +341,11 @@ export default function Home() {
           transition: all 0.3s;
           display: inline-block;
         }
-        .btn-gold:hover { background: var(--gold-light); }
+
+        .btn-gold:hover {
+          background: var(--gold-light);
+        }
+
         .btn-outline {
           border: 1px solid rgba(201,168,76,0.4);
           color: var(--gold);
@@ -302,10 +358,12 @@ export default function Home() {
           transition: all 0.3s;
           display: inline-block;
         }
+
         .btn-outline:hover {
           background: rgba(201,168,76,0.08);
           border-color: var(--gold);
         }
+
         .hero-scroll {
           position: absolute;
           bottom: 40px;
@@ -320,19 +378,30 @@ export default function Home() {
           letter-spacing: 3px;
           text-transform: uppercase;
         }
+
         .scroll-line {
           width: 1px;
           height: 48px;
           background: linear-gradient(to bottom, var(--gold), transparent);
           animation: scrollAnim 2s ease-in-out infinite;
         }
+
         @keyframes scrollAnim {
-          0%, 100% { opacity: 0.3; transform: scaleY(1); }
-          50% { opacity: 1; transform: scaleY(1.2); }
+          0%, 100% {
+            opacity: 0.3;
+            transform: scaleY(1);
+          }
+          50% {
+            opacity: 1;
+            transform: scaleY(1.2);
+          }
         }
 
-        /* SECTION */
-        section { padding: 120px 60px; }
+        /* ── GENEL SECTION ── */
+        section {
+          padding: 120px 60px;
+        }
+
         .section-label {
           font-size: 10px;
           letter-spacing: 6px;
@@ -343,6 +412,7 @@ export default function Home() {
           align-items: center;
           gap: 16px;
         }
+
         .section-label::before {
           content: '';
           display: block;
@@ -350,6 +420,7 @@ export default function Home() {
           height: 1px;
           background: var(--gold);
         }
+
         .section-title {
           font-family: 'Cormorant Garamond', serif;
           font-size: clamp(36px, 5vw, 60px);
@@ -358,16 +429,19 @@ export default function Home() {
           color: var(--white);
           margin-bottom: 24px;
         }
+
         .section-title em {
           font-style: italic;
           color: var(--gold);
         }
+
         .section-desc {
           color: var(--gray);
           font-size: 13px;
           line-height: 2;
           max-width: 500px;
         }
+
         .divider {
           width: 60px;
           height: 1px;
@@ -375,14 +449,18 @@ export default function Home() {
           margin: 40px 0;
         }
 
-        /* HİZMETLER */
-        .hizmetler-section { background: var(--black-soft); }
+        /* ── HİZMETLER ── */
+        .hizmetler-section {
+          background: var(--black-soft);
+        }
+
         .hizmetler-grid {
           display: grid;
           grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
           gap: 2px;
           margin-top: 72px;
         }
+
         .hizmet-card {
           background: var(--black-card);
           padding: 48px 40px;
@@ -391,25 +469,34 @@ export default function Home() {
           position: relative;
           overflow: hidden;
         }
+
         .hizmet-card::before {
           content: '';
           position: absolute;
-          top: 0; left: 0;
-          width: 0; height: 2px;
+          top: 0;
+          left: 0;
+          width: 0;
+          height: 2px;
           background: var(--gold);
           transition: width 0.4s ease;
         }
-        .hizmet-card:hover::before { width: 100%; }
+
+        .hizmet-card:hover::before {
+          width: 100%;
+        }
+
         .hizmet-card:hover {
           background: #1A1A1A;
           transform: translateY(-4px);
         }
+
         .hizmet-ikon {
           font-size: 24px;
           color: var(--gold);
           margin-bottom: 24px;
           display: block;
         }
+
         .hizmet-isim {
           font-family: 'Cormorant Garamond', serif;
           font-size: 24px;
@@ -418,13 +505,14 @@ export default function Home() {
           margin-bottom: 16px;
           letter-spacing: 1px;
         }
+
         .hizmet-aciklama {
           color: var(--gray);
           font-size: 12px;
           line-height: 2;
         }
 
-        /* HAKKIMIZDA */
+        /* ── HAKKIMIZDA ── */
         .hakkimizda-inner {
           display: grid;
           grid-template-columns: 1fr 1fr;
@@ -433,9 +521,11 @@ export default function Home() {
           max-width: 1200px;
           margin: 0 auto;
         }
+
         .hakkimizda-visual {
           position: relative;
         }
+
         .hakkimizda-box {
           aspect-ratio: 3/4;
           background: var(--black-card);
@@ -446,14 +536,7 @@ export default function Home() {
           position: relative;
           overflow: hidden;
         }
-        .hakkimizda-box-inner {
-          font-family: 'Cormorant Garamond', serif;
-          font-size: 80px;
-          color: rgba(201,168,76,0.08);
-          letter-spacing: 4px;
-          text-align: center;
-          font-style: italic;
-        }
+
         .hakkimizda-badge {
           position: absolute;
           bottom: -24px;
@@ -466,13 +549,15 @@ export default function Home() {
           align-items: center;
           justify-content: center;
         }
+
         .hakkimizda-badge-num {
           font-family: 'Cormorant Garamond', serif;
-          font-size: 40px;
+          font-size: 34px;
           font-weight: 600;
           color: var(--black);
           line-height: 1;
         }
+
         .hakkimizda-badge-text {
           font-size: 9px;
           letter-spacing: 2px;
@@ -480,18 +565,21 @@ export default function Home() {
           text-transform: uppercase;
           text-align: center;
         }
+
         .ozellik {
           display: flex;
           gap: 20px;
           margin-bottom: 32px;
           align-items: flex-start;
         }
+
         .ozellik-ikon {
           color: var(--gold);
           font-size: 18px;
           margin-top: 2px;
           flex-shrink: 0;
         }
+
         .ozellik-baslik {
           font-family: 'Cormorant Garamond', serif;
           font-size: 20px;
@@ -499,14 +587,88 @@ export default function Home() {
           color: var(--white);
           margin-bottom: 6px;
         }
+
         .ozellik-aciklama {
           font-size: 12px;
           color: var(--gray);
           line-height: 1.8;
         }
 
-        /* İLETİŞİM */
-        .iletisim-section { background: var(--black-soft); }
+        /* ── CTA ── */
+        .cta-section {
+          text-align: center;
+          padding: 100px 60px;
+          position: relative;
+          overflow: hidden;
+          min-height: 520px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .cta-overlay {
+          position: absolute;
+          inset: 0;
+          background: rgba(10,10,10,0.72);
+          z-index: 1;
+        }
+
+        .cta-content {
+          position: relative;
+          z-index: 2;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .cta-label-row {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+          margin-bottom: 24px;
+        }
+
+        .cta-gold-line {
+          width: 60px;
+          height: 1px;
+          background: var(--gold);
+        }
+
+        .cta-label-text {
+          font-size: 10px;
+          letter-spacing: 6px;
+          color: var(--gold);
+          text-transform: uppercase;
+        }
+
+        .cta-title {
+          font-family: 'Cormorant Garamond', serif;
+          font-size: clamp(40px, 6vw, 72px);
+          font-weight: 300;
+          color: var(--white);
+          margin-bottom: 24px;
+          line-height: 1.1;
+        }
+
+        .cta-title em {
+          color: var(--gold);
+          font-style: italic;
+        }
+
+        .cta-btns {
+          display: flex;
+          gap: 16px;
+          justify-content: center;
+          flex-wrap: wrap;
+          margin-top: 40px;
+        }
+
+        /* ── İLETİŞİM ── */
+        .iletisim-section {
+          background: var(--black-soft);
+        }
+
         .iletisim-inner {
           display: grid;
           grid-template-columns: 1fr 1fr;
@@ -514,18 +676,21 @@ export default function Home() {
           max-width: 1100px;
           margin: 72px auto 0;
         }
+
         .iletisim-info-item {
           display: flex;
           gap: 20px;
           margin-bottom: 40px;
           align-items: flex-start;
         }
+
         .iletisim-ikon {
           color: var(--gold);
           font-size: 18px;
           margin-top: 2px;
           flex-shrink: 0;
         }
+
         .iletisim-label {
           font-size: 10px;
           letter-spacing: 3px;
@@ -533,42 +698,53 @@ export default function Home() {
           text-transform: uppercase;
           margin-bottom: 8px;
         }
+
         .iletisim-value {
           font-family: 'Cormorant Garamond', serif;
           font-size: 20px;
           color: var(--white);
           line-height: 1.6;
         }
+
         .iletisim-value a {
           color: var(--white);
           text-decoration: none;
           transition: color 0.3s;
         }
-        .iletisim-value a:hover { color: var(--gold); }
+
+        .iletisim-value a:hover {
+          color: var(--gold);
+        }
+
         .sosyal-linkler {
           display: flex;
-          gap: 16px;
+          gap: 12px;
           margin-top: 40px;
+          flex-wrap: wrap;
         }
+
         .sosyal-link {
           border: 1px solid rgba(201,168,76,0.3);
           color: var(--gold);
           text-decoration: none;
-          padding: 12px 24px;
+          padding: 12px 20px;
           font-size: 11px;
           letter-spacing: 2px;
           transition: all 0.3s;
           text-transform: uppercase;
         }
+
         .sosyal-link:hover {
           background: var(--gold);
           color: var(--black);
         }
+
         .randevu-form {
           display: flex;
           flex-direction: column;
           gap: 16px;
         }
+
         .randevu-form input,
         .randevu-form select,
         .randevu-form textarea {
@@ -583,48 +759,28 @@ export default function Home() {
           transition: border-color 0.3s;
           width: 100%;
         }
+
         .randevu-form input:focus,
         .randevu-form select:focus,
         .randevu-form textarea:focus {
           border-color: var(--gold);
         }
-        .randevu-form select option { background: var(--black-card); }
-        .randevu-form textarea { resize: none; height: 120px; }
+
+        .randevu-form select option {
+          background: var(--black-card);
+        }
+
+        .randevu-form textarea {
+          resize: none;
+          height: 120px;
+        }
+
         .randevu-form input::placeholder,
-        .randevu-form textarea::placeholder { color: var(--gray); }
-
-        /* CTA */
-        .cta-section {
-          text-align: center;
-          background: var(--black);
-          padding: 100px 60px;
-          position: relative;
-          overflow: hidden;
-        }
-        .cta-bg {
-          position: absolute;
-          inset: 0;
-          background: radial-gradient(ellipse 50% 80% at 50% 50%, rgba(201,168,76,0.05) 0%, transparent 70%);
-        }
-        .cta-title {
-          font-family: 'Cormorant Garamond', serif;
-          font-size: clamp(36px, 5vw, 60px);
-          font-weight: 300;
-          color: var(--white);
-          margin-bottom: 24px;
-          position: relative;
-        }
-        .cta-title em { color: var(--gold); font-style: italic; }
-        .cta-btns {
-          display: flex;
-          gap: 16px;
-          justify-content: center;
-          flex-wrap: wrap;
-          position: relative;
-          margin-top: 40px;
+        .randevu-form textarea::placeholder {
+          color: var(--gray);
         }
 
-        /* FOOTER */
+        /* ── FOOTER ── */
         footer {
           background: var(--black);
           border-top: 1px solid rgba(201,168,76,0.1);
@@ -635,30 +791,68 @@ export default function Home() {
           flex-wrap: wrap;
           gap: 20px;
         }
+
         .footer-logo {
           font-family: 'Cormorant Garamond', serif;
           font-size: 18px;
           color: var(--gold);
           letter-spacing: 3px;
         }
+
         .footer-copy {
           font-size: 11px;
           color: var(--gray);
           letter-spacing: 1px;
         }
 
-        /* RESPONSIVE */
+        /* ── RESPONSIVE ── */
         @media (max-width: 900px) {
-          nav { padding: 20px 24px; }
-          nav.scrolled { padding: 14px 24px; }
-          .nav-links, .nav-phone { display: none; }
-          .hamburger { display: flex; }
-          section { padding: 80px 24px; }
-          .hakkimizda-inner { grid-template-columns: 1fr; gap: 60px; }
-          .hakkimizda-visual { display: none; }
-          .iletisim-inner { grid-template-columns: 1fr; gap: 48px; }
-          footer { padding: 32px 24px; flex-direction: column; text-align: center; }
-          .cta-section { padding: 80px 24px; }
+          nav {
+            padding: 20px 24px;
+          }
+          nav.scrolled {
+            padding: 14px 24px;
+          }
+          .nav-links,
+          .nav-phone {
+            display: none;
+          }
+          .hamburger {
+            display: flex;
+          }
+          section {
+            padding: 80px 24px;
+          }
+          .hakkimizda-inner {
+            grid-template-columns: 1fr;
+            gap: 60px;
+          }
+          .hakkimizda-visual {
+            display: block;
+            max-width: 320px;
+            margin: 0 auto;
+          }
+          .iletisim-inner {
+            grid-template-columns: 1fr;
+            gap: 48px;
+          }
+          footer {
+            padding: 32px 24px;
+            flex-direction: column;
+            text-align: center;
+          }
+          .cta-section {
+            padding: 80px 24px;
+            min-height: 420px;
+          }
+          .sosyal-linkler {
+            gap: 8px;
+          }
+          .sosyal-link {
+            padding: 10px 14px;
+            font-size: 10px;
+            letter-spacing: 1px;
+          }
         }
       `}</style>
 
@@ -685,9 +879,17 @@ export default function Home() {
         <div className={`mobile-menu${menuOpen ? " open" : ""}`}>
           <button className="mobile-close" onClick={() => setMenuOpen(false)}>✕</button>
           {navLinks.map((l) => (
-              <a key={l.href} href={l.href} onClick={() => setMenuOpen(false)}>{l.label}</a>
+              <a key={l.href} href={l.href} onClick={() => setMenuOpen(false)}>
+                {l.label}
+              </a>
           ))}
-          <a href="tel:05468794610" onClick={() => setMenuOpen(false)} style={{fontSize: "20px", letterSpacing: "2px"}}>0546 879 46 10</a>
+          <a
+              href="tel:05468794610"
+              onClick={() => setMenuOpen(false)}
+              style={{ fontSize: "20px", letterSpacing: "2px" }}
+          >
+            0546 879 46 10
+          </a>
         </div>
 
         {/* HERO */}
@@ -716,9 +918,11 @@ export default function Home() {
 
         {/* HİZMETLER */}
         <section id="hizmetler" className="hizmetler-section">
-          <div style={{maxWidth: "1200px", margin: "0 auto"}}>
+          <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
             <div className="section-label">Hizmetlerimiz</div>
-            <h2 className="section-title">Profesyonel<br /><em>Güzellik Hizmetleri</em></h2>
+            <h2 className="section-title">
+              Profesyonel<br /><em>Güzellik Hizmetleri</em>
+            </h2>
             <p className="section-desc">
               En son teknoloji ve uzman ekibimizle, güzellik ihtiyaçlarınız için kapsamlı çözümler sunuyoruz. Her uygulama kişiye özel planlanır.
             </p>
@@ -734,12 +938,17 @@ export default function Home() {
           </div>
         </section>
 
-        {/* HAKKIMIZDA */}
+        {/* HAKKIMIZDA — Fotoğraf 1 */}
         <section id="hakkimizda">
           <div className="hakkimizda-inner">
             <div className="hakkimizda-visual">
               <div className="hakkimizda-box">
-                <div className="hakkimizda-box-inner">Güzellik<br />Sanatı</div>
+                <Image
+                    src="/busraakguzellik-1.jpeg"
+                    alt="Büşra Ak Güzellik Merkezi"
+                    fill
+                    style={{ objectFit: "cover", objectPosition: "center top" }}
+                />
               </div>
               <div className="hakkimizda-badge">
                 <div className="hakkimizda-badge-num">7 Gün</div>
@@ -748,15 +957,29 @@ export default function Home() {
             </div>
             <div>
               <div className="section-label">Hakkımızda</div>
-              <h2 className="section-title">Güzelliğin<br /><em>Adresi</em></h2>
+              <h2 className="section-title">
+                Güzelliğin<br /><em>Adresi</em>
+              </h2>
               <p className="section-desc">
                 Büşra Ak Güzellik Merkezi olarak Balıkesir&apos;de profesyonel güzellik hizmetleri sunuyoruz. Uzman ekibimiz ve modern cihazlarımızla her müşterimize özel çözümler üretiyoruz.
               </p>
               <div className="divider" />
               {[
-                { ikon: "✿", baslik: "Uzman Kadro", aciklama: "Alanında deneyimli, sertifikalı güzellik uzmanlarımızla güvende olun." },
-                { ikon: "✿", baslik: "Balıkesir'de İlk ve Tek", aciklama: "Falcon 4 Pro lazer epilasyon cihazları ve dahası" },
-                { ikon: "✿", baslik: "Kişiye Özel Bakım & Uygulamalar", aciklama: "Hydra , Pumbak , Co2 gibi cildinize özel bakımlar" },
+                {
+                  ikon: "✿",
+                  baslik: "Uzman Kadro",
+                  aciklama: "Alanında deneyimli, sertifikalı güzellik uzmanlarımızla güvende olun.",
+                },
+                {
+                  ikon: "✿",
+                  baslik: "Balıkesir'de İlk ve Tek",
+                  aciklama: "Falcon 4 Pro lazer epilasyon cihazları ve dahası",
+                },
+                {
+                  ikon: "✿",
+                  baslik: "Kişiye Özel Bakım & Uygulamalar",
+                  aciklama: "Hydra, Pumbak, Co2 gibi cildinize özel bakımlar",
+                },
               ].map((o) => (
                   <div key={o.baslik} className="ozellik">
                     <div className="ozellik-ikon">{o.ikon}</div>
@@ -770,31 +993,68 @@ export default function Home() {
           </div>
         </section>
 
-        {/* CTA */}
+        {/* CTA — Fotoğraf 2 arka planda */}
         <section className="cta-section">
-          <div className="cta-bg" />
-          <div className="section-label" style={{justifyContent: "center"}}>Randevu</div>
-          <h2 className="cta-title">Güzelliğinizi<br /><em>Keşfedin</em></h2>
-          <p style={{color: "var(--gray)", fontSize: "13px", letterSpacing: "1px", position: "relative"}}>
-            Profesyonel ekibimizle tanışın ve kişiye özel bakım programınızı oluşturalım.
-          </p>
-          <div className="cta-btns">
-            <a href="tel:05468794610" className="btn-gold">Hemen Ara</a>
-            <a href="https://wa.me/905468794610" target="_blank" rel="noopener noreferrer" className="btn-outline">WhatsApp</a>
+          <Image
+              src="/busraakguzellik-2.jpeg"
+              alt="Büşra Ak Güzellik"
+              fill
+              style={{ objectFit: "cover", objectPosition: "center top" }}
+          />
+          <div className="cta-overlay" />
+          <div className="cta-content">
+            <div className="cta-label-row">
+              <div className="cta-gold-line" />
+              <span className="cta-label-text">Randevu</span>
+              <div className="cta-gold-line" />
+            </div>
+            <h2 className="cta-title">
+              Güzelliğinizi<br /><em>Keşfedin</em>
+            </h2>
+            <p style={{ color: "var(--white-soft)", fontSize: "13px", letterSpacing: "1px" }}>
+              Profesyonel ekibimizle tanışın ve kişiye özel bakım programınızı oluşturalım.
+            </p>
+            <div className="cta-btns">
+              <a href="tel:05468794610" className="btn-gold">Hemen Ara</a>
+              <a
+                  href="https://wa.me/905468794610"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-outline"
+              >
+                WhatsApp
+              </a>
+            </div>
           </div>
         </section>
 
         {/* İLETİŞİM */}
         <section id="iletisim" className="iletisim-section">
-          <div style={{maxWidth: "1100px", margin: "0 auto"}}>
+          <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
             <div className="section-label">İletişim</div>
-            <h2 className="section-title">Bizimle<br /><em>İletişime Geçin</em></h2>
+            <h2 className="section-title">
+              Bizimle<br /><em>İletişime Geçin</em>
+            </h2>
             <div className="iletisim-inner">
               <div>
                 {[
-                  { ikon: "◎", label: "Adres", value: <>Eski Kuyumcular Mah. Milli Kuvvetler Cad.<br />No:52, Balıkesir</> },
-                  { ikon: "✆", label: "Telefon", value: <a href="tel:05468794610">0546 879 46 10</a> },
-                  { ikon: "◷", label: "Çalışma Saatleri", value: <>Haftanın 7 Günü<br />10:00 — 00:00</> },
+                  {
+                    ikon: "◎",
+                    label: "Adres",
+                    value: (
+                        <>Eski Kuyumcular Mah. Milli Kuvvetler Cad.<br />No:52, Balıkesir</>
+                    ),
+                  },
+                  {
+                    ikon: "✆",
+                    label: "Telefon",
+                    value: <a href="tel:05468794610">0546 879 46 10</a>,
+                  },
+                  {
+                    ikon: "◷",
+                    label: "Çalışma Saatleri",
+                    value: <>Haftanın 7 Günü<br />10:00 — 00:00</>,
+                  },
                 ].map((item) => (
                     <div key={item.label} className="iletisim-info-item">
                       <div className="iletisim-ikon">{item.ikon}</div>
@@ -805,18 +1065,41 @@ export default function Home() {
                     </div>
                 ))}
                 <div className="sosyal-linkler">
-                  <a href="https://instagram.com/busraakguzellik" target="_blank" rel="noopener noreferrer" className="sosyal-link">
+                  <a
+                      href="https://instagram.com/busraakguzellik"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="sosyal-link"
+                  >
                     Instagram
                   </a>
-                  <a href="https://wa.me/905468794610" target="_blank" rel="noopener noreferrer" className="sosyal-link">
+                  <a
+                      href="https://wa.me/905468794610"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="sosyal-link"
+                  >
                     WhatsApp
+                  </a>
+                  <a
+                      href="https://share.google/JsA2AlrmAmJdQHT14"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="sosyal-link"
+                  >
+                    Konum
                   </a>
                 </div>
               </div>
               <div>
-                <div className="section-label" style={{marginBottom: "32px"}}>Randevu Formu</div>
+                <div className="section-label" style={{ marginBottom: "32px" }}>
+                  Randevu Formu
+                </div>
                 <div className="randevu-form">
-                  <input type="text" placeholder="Adınız Soyadınız" />
+                  <input
+                      type="text"
+                      placeholder="Adınız Soyadınız"
+                  />
                   <input
                       type="tel"
                       placeholder="5xx xxx xx xx"
@@ -831,7 +1114,13 @@ export default function Home() {
                     ))}
                   </select>
                   <textarea placeholder="Notunuz (isteğe bağlı)" />
-                  <a href="https://wa.me/905468794610" target="_blank" rel="noopener noreferrer" className="btn-gold" style={{textAlign: "center"}}>
+                  <a
+                      href="https://wa.me/905468794610"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-gold"
+                      style={{ textAlign: "center" }}
+                  >
                     Randevu Talebi Gönder
                   </a>
                 </div>
