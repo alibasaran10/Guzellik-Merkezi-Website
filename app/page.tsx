@@ -6,6 +6,12 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
+  // --- YENİ EKLENEN FORM STATELERİ ---
+  const [formAd, setFormAd] = useState("");
+  const [formTel, setFormTel] = useState("");
+  const [formHizmet, setFormHizmet] = useState("");
+  const [formNot, setFormNot] = useState("");
+
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
@@ -51,6 +57,19 @@ export default function Home() {
     { href: "#hakkimizda", label: "HAKKIMIZDA" },
     { href: "#iletisim", label: "İLETİŞİM" },
   ];
+
+  // --- YENİ EKLENEN WHATSAPP GÖNDERME FONKSİYONU ---
+  const randevuGonder = () => {
+    if (!formAd || !formTel) {
+      alert("Lütfen adınızı ve telefon numaranızı giriniz.");
+      return;
+    }
+
+    const mesaj = `Merhaba, randevu almak istiyorum.%0A%0A*Ad Soyad:* ${formAd}%0A*Telefon:* ${formTel}%0A*İstenen Hizmet:* ${formHizmet || 'Belirtilmedi'}%0A*Not:* ${formNot || 'Yok'}`;
+    const whatsappUrl = `https://wa.me/905468794610?text=${mesaj}`;
+
+    window.open(whatsappUrl, '_blank');
+  };
 
   return (
       <>
@@ -1097,35 +1116,51 @@ export default function Home() {
                 <div className="section-label" style={{ marginBottom: "32px" }}>
                   Randevu Formu
                 </div>
+
+                {/* YENİLENEN RANDEVU FORMU ALANI */}
                 <div className="randevu-form">
                   <input
                       type="text"
                       placeholder="Adınız Soyadınız"
+                      value={formAd}
+                      onChange={(e) => setFormAd(e.target.value)}
                   />
                   <input
                       type="tel"
                       placeholder="5xx xxx xx xx"
                       maxLength={10}
+                      value={formTel}
+                      onChange={(e) => setFormTel(e.target.value)}
                       onInput={(e) => {
                         e.currentTarget.value = e.currentTarget.value.replace(/[^0-9]/g, '').slice(0, 10);
                       }}
                   />
-                  <select>
+                  <select value={formHizmet} onChange={(e) => setFormHizmet(e.target.value)}>
                     <option value="">Hizmet Seçiniz</option>
                     {hizmetler.map((h) => (
                         <option key={h.isim} value={h.isim}>{h.isim}</option>
                     ))}
                   </select>
-                  <textarea placeholder="Notunuz (isteğe bağlı)" />
-                  <a
-                      href="https://wa.me/905468794610"
-                      target="_blank"
-                      rel="noopener noreferrer"
+                  <textarea
+                      placeholder="Notunuz (isteğe bağlı)"
+                      value={formNot}
+                      onChange={(e) => setFormNot(e.target.value)}
+                  />
+
+                  {/* BUTON DEĞİŞİKLİĞİ */}
+                  <button
+                      onClick={randevuGonder}
                       className="btn-gold"
-                      style={{ textAlign: "center" }}
+                      style={{
+                        textAlign: "center",
+                        border: "none",
+                        cursor: "pointer",
+                        width: "100%",
+                        fontFamily: "'Montserrat', sans-serif"
+                      }}
                   >
                     Randevu Talebi Gönder
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>
