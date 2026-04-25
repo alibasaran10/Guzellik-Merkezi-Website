@@ -918,11 +918,11 @@ export default function Home() {
           <div className="hero-bg" />
           <div className="hero-lines" />
           <div className="hero-content">
-            <div className="hero-badge">✦ Premium Güzellik Merkezi — BALIKESİR</div>
+            <div className="hero-badge">✦ Premium Güzellik Salonu — BALIKESİR</div>
             <h1 className="hero-title">
               İçiniz Güzel Olsun<br /><em>Dışınızı Biz Hallederiz</em>
             </h1>
-            <p className="hero-subtitle">Büşra Ak Güzellik</p>
+            <p className="hero-subtitle">Büşra Ak Güzellik </p>
             <p className="hero-desc">
               Profesyonel ekibimiz ve son teknoloji cihazlarımızla, güzelliğinizi ön plana çıkarıyor, kendinizi özel hissetmenizi sağlıyoruz.
             </p>
@@ -982,7 +982,7 @@ export default function Home() {
                 Güzelliğin<br /><em>Adresi</em>
               </h2>
               <p className="section-desc">
-                Büşra Ak Güzellik Merkezi olarak Balıkesir&apos;de profesyonel güzellik hizmetleri sunuyoruz. Uzman ekibimiz ve modern cihazlarımızla her müşterimize özel çözümler üretiyoruz.
+                Büşra Ak Güzellik Salonu olarak Balıkesir&apos;de profesyonel güzellik hizmetleri sunuyoruz. Uzman ekibimiz ve modern cihazlarımızla her müşterimize özel çözümler üretiyoruz.
               </p>
               <div className="divider" />
               {[
