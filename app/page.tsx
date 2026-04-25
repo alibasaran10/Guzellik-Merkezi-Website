@@ -881,7 +881,7 @@ export default function Home() {
         <nav className={scrolled ? "scrolled" : ""}>
           <a href="#anasayfa" className="nav-logo">
             Büşra Ak
-            <span>Güzellik Merkezi</span>
+            <span>Güzellik</span>
           </a>
           <ul className="nav-links">
             {navLinks.map((l) => (
@@ -1169,8 +1169,8 @@ export default function Home() {
 
         {/* FOOTER */}
         <footer>
-          <div className="footer-logo">Büşra Ak Güzellik Merkezi</div>
-          <div className="footer-copy">© 2026 Büşra Ak Güzellik Merkezi. Tüm hakları saklıdır.</div>
+          <div className="footer-logo">Büşra Ak Güzellik Salonu</div>
+          <div className="footer-copy">© 2026 Büşra Ak Güzellik . Tüm hakları saklıdır.</div>
         </footer>
       </>
   );
