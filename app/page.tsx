@@ -6,7 +6,6 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // --- FORM STATELERİ ---
   const [formAd, setFormAd] = useState("");
   const [formTel, setFormTel] = useState("");
   const [formHizmet, setFormHizmet] = useState("");
@@ -55,21 +54,40 @@ export default function Home() {
     { href: "#anasayfa", label: "ANASAYFA" },
     { href: "#hizmetler", label: "HİZMETLER" },
     { href: "#hakkimizda", label: "HAKKIMIZDA" },
+    { href: "#yorumlar", label: "YORUMLAR" },
     { href: "#iletisim", label: "İLETİŞİM" },
   ];
 
-  // ---  WHATSAPP GÖNDERME FONKSİYONU ---
   const randevuGonder = () => {
     if (!formAd || !formTel) {
       alert("Lütfen adınızı ve telefon numaranızı giriniz.");
       return;
     }
-
     const mesaj = `Merhaba, randevu almak istiyorum.\n\n*Ad Soyad:* ${formAd}\n*Telefon:* ${formTel}\n*İstenen Hizmet:* ${formHizmet || 'Belirtilmedi'}\n*Not:* ${formNot || 'Yok'}`;
     const whatsappUrl = `https://wa.me/905468794610?text=${encodeURIComponent(mesaj)}`;
-
     window.open(whatsappUrl, '_blank');
   };
+
+  const yorumlar = [
+    {
+      metin: "Uzun zamandır kirpik lifting yaptırmak istiyordum ama alerji, mikrop kapma gibi durumlardan korkuyordum. Büşra Hanımın salonuna gittiğimde hem kendisine hem de salonuna içim çok ısındı. Çalışanlar, çalışma ortamı, hijyeni ve kullandığı ürünler bana çok güven verdi. Yapalı 5 gün oldu ve daha rimel kullanma ihtiyacı hissetmedim. Gönül rahatlığıyla tercih edebilirsiniz.",
+      isim: "Seda Y.",
+      hizmet: "Kirpik Lifting",
+      avatar: "S",
+    },
+    {
+      metin: "Büşra hanım o kadar tatlı, güler yüzlü ve anlayışlı ki sırf terapi niyetine bile gidilir. İşinde çok başarılı, yaptığı işe oldukça hakim. İş yeri hijyen konusunda çok hassaslar. Herkes gönül rahatlığıyla gidebilir.",
+      isim: "Merve K.",
+      hizmet: "Genel Bakım",
+      avatar: "M",
+    },
+    {
+      metin: "Uzun zamandır araştırıp sonunda iyi ki burada başlamışım dediğim bir yer oldu. İşlem öncesi detaylı bilgilendirme yapmaları çok güven verdi. Hijyen, ilgi ve profesyonellik açısından gerçekten çok başarılı 🌸 Balıkesir'de gönül rahatlığıyla tercih edilebilecek nadir yerlerden biri 🌸 Hem cihaz kalitesi hem ilgi alakaları gerçekten çok iyi.",
+      isim: "Elif T.",
+      hizmet: "Lazer Epilasyon",
+      avatar: "E",
+    },
+  ];
 
   return (
       <>
@@ -406,14 +424,8 @@ export default function Home() {
         }
 
         @keyframes scrollAnim {
-          0%, 100% {
-            opacity: 0.3;
-            transform: scaleY(1);
-          }
-          50% {
-            opacity: 1;
-            transform: scaleY(1.2);
-          }
+          0%, 100% { opacity: 0.3; transform: scaleY(1); }
+          50% { opacity: 1; transform: scaleY(1.2); }
         }
 
         /* ── GENEL SECTION ── */
@@ -612,6 +624,137 @@ export default function Home() {
           font-size: 12px;
           color: var(--gray);
           line-height: 1.8;
+        }
+
+        /* ── YORUMLAR ── */
+        .yorumlar-section {
+          background: var(--black);
+        }
+
+        .yorumlar-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+          gap: 2px;
+          margin-top: 72px;
+        }
+
+        .yorum-card {
+          background: var(--black-card);
+          border: 1px solid rgba(201,168,76,0.08);
+          padding: 48px 40px;
+          position: relative;
+          transition: all 0.4s ease;
+          overflow: hidden;
+        }
+
+        .yorum-card::after {
+          content: '"';
+          position: absolute;
+          top: 20px;
+          right: 28px;
+          font-family: 'Cormorant Garamond', serif;
+          font-size: 100px;
+          color: rgba(201,168,76,0.07);
+          line-height: 1;
+          pointer-events: none;
+        }
+
+        .yorum-card:hover {
+          background: #1A1A1A;
+          border-color: rgba(201,168,76,0.2);
+          transform: translateY(-4px);
+        }
+
+        .yorum-yildizlar {
+          display: flex;
+          gap: 4px;
+          margin-bottom: 24px;
+        }
+
+        .yorum-yildiz {
+          color: var(--gold);
+          font-size: 14px;
+        }
+
+        .yorum-metin {
+          font-family: 'Cormorant Garamond', serif;
+          font-size: 17px;
+          font-weight: 400;
+          font-style: italic;
+          color: var(--white-soft);
+          line-height: 1.8;
+          margin-bottom: 32px;
+        }
+
+        .yorum-kisi {
+          display: flex;
+          align-items: center;
+          gap: 14px;
+        }
+
+        .yorum-avatar {
+          width: 40px;
+          height: 40px;
+          background: rgba(201,168,76,0.12);
+          border: 1px solid rgba(201,168,76,0.3);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: 'Cormorant Garamond', serif;
+          font-size: 18px;
+          color: var(--gold);
+          flex-shrink: 0;
+        }
+
+        .yorum-isim {
+          font-family: 'Cormorant Garamond', serif;
+          font-size: 16px;
+          font-weight: 500;
+          color: var(--white);
+          letter-spacing: 1px;
+        }
+
+        .yorum-hizmet {
+          font-size: 10px;
+          letter-spacing: 2px;
+          color: var(--gold);
+          text-transform: uppercase;
+          margin-top: 3px;
+        }
+
+        .yorumlar-badge-wrap {
+          display: flex;
+          justify-content: center;
+          margin-top: 56px;
+        }
+
+        .google-badge-inner {
+          display: inline-flex;
+          align-items: center;
+          gap: 20px;
+          border: 1px solid rgba(201,168,76,0.2);
+          padding: 20px 40px;
+        }
+
+        .google-badge-rating {
+          font-family: 'Cormorant Garamond', serif;
+          font-size: 44px;
+          color: var(--gold);
+          font-weight: 500;
+          line-height: 1;
+        }
+
+        .google-badge-stars {
+          display: flex;
+          gap: 3px;
+          margin-bottom: 6px;
+        }
+
+        .google-badge-label {
+          font-size: 10px;
+          letter-spacing: 2px;
+          color: var(--gray);
+          text-transform: uppercase;
         }
 
         /* ── CTA ── */
@@ -874,6 +1017,16 @@ export default function Home() {
             font-size: 10px;
             letter-spacing: 1px;
           }
+          .yorumlar-grid {
+            grid-template-columns: 1fr;
+          }
+          .yorum-card {
+            padding: 36px 28px;
+          }
+          .google-badge-inner {
+            padding: 16px 24px;
+            gap: 16px;
+          }
         }
       `}</style>
 
@@ -922,7 +1075,7 @@ export default function Home() {
             <h1 className="hero-title">
               İçiniz Güzel Olsun<br /><em>Dışınızı Biz Hallederiz</em>
             </h1>
-            <p className="hero-subtitle">Büşra Ak Güzellik </p>
+            <p className="hero-subtitle">Büşra Ak Güzellik</p>
             <p className="hero-desc">
               Profesyonel ekibimiz ve son teknoloji cihazlarımızla, güzelliğinizi ön plana çıkarıyor, kendinizi özel hissetmenizi sağlıyoruz.
             </p>
@@ -959,7 +1112,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* HAKKIMIZDA — Fotoğraf 1 */}
+        {/* HAKKIMIZDA */}
         <section id="hakkimizda">
           <div className="hakkimizda-inner">
             <div className="hakkimizda-visual">
@@ -1014,7 +1167,52 @@ export default function Home() {
           </div>
         </section>
 
-        {/* CTA — Fotoğraf 2 arka planda */}
+        {/* YORUMLAR */}
+        <section id="yorumlar" className="yorumlar-section">
+          <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+            <div className="section-label">Müşteri Yorumları</div>
+            <h2 className="section-title">
+              Memnun Müşterilerimiz<br /><em>Anlatıyor</em>
+            </h2>
+            <p className="section-desc">
+              Her müşterimizin deneyimi bizim için değerlidir. Gerçek yorumlar, gerçek güzellik.
+            </p>
+            <div className="yorumlar-grid">
+              {yorumlar.map((y, i) => (
+                  <div key={i} className="yorum-card">
+                    <div className="yorum-yildizlar">
+                      {[...Array(5)].map((_, j) => (
+                          <span key={j} className="yorum-yildiz">★</span>
+                      ))}
+                    </div>
+                    <p className="yorum-metin">&ldquo;{y.metin}&rdquo;</p>
+                    <div className="yorum-kisi">
+                      <div className="yorum-avatar">{y.avatar}</div>
+                      <div>
+                        <div className="yorum-isim">{y.isim}</div>
+                        <div className="yorum-hizmet">{y.hizmet}</div>
+                      </div>
+                    </div>
+                  </div>
+              ))}
+            </div>
+            <div className="yorumlar-badge-wrap">
+              <div className="google-badge-inner">
+                <div className="google-badge-rating">5.0</div>
+                <div>
+                  <div className="google-badge-stars">
+                    {[...Array(5)].map((_, i) => (
+                        <span key={i} style={{ color: "var(--gold)", fontSize: "16px" }}>★</span>
+                    ))}
+                  </div>
+                  <div className="google-badge-label">Google Değerlendirmeleri</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA */}
         <section className="cta-section">
           <Image
               src="/busraakguzellik-2.jpeg"
@@ -1116,8 +1314,6 @@ export default function Home() {
                 <div className="section-label" style={{ marginBottom: "32px" }}>
                   Randevu Formu
                 </div>
-
-                {/* RANDEVU FORMU ALANI */}
                 <div className="randevu-form">
                   <input
                       type="text"
@@ -1146,8 +1342,6 @@ export default function Home() {
                       value={formNot}
                       onChange={(e) => setFormNot(e.target.value)}
                   />
-
-                  {/* BUTON DEĞİŞİKLİĞİ */}
                   <button
                       onClick={randevuGonder}
                       className="btn-gold"
