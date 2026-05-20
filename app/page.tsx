@@ -71,21 +71,21 @@ export default function Home() {
   const yorumlar = [
     {
       metin: "Uzun zamandır kirpik lifting yaptırmak istiyordum ama alerji, mikrop kapma gibi durumlardan korkuyordum. Büşra Hanımın salonuna gittiğimde hem kendisine hem de salonuna içim çok ısındı. Çalışanlar, çalışma ortamı, hijyeni ve kullandığı ürünler bana çok güven verdi. Yapalı 5 gün oldu ve daha rimel kullanma ihtiyacı hissetmedim. Gönül rahatlığıyla tercih edebilirsiniz.",
-      isim: "Seda Y.",
+      isim: "Nisa Ç.",
       hizmet: "Kirpik Lifting",
-      avatar: "S",
+      avatar: "N",
     },
     {
       metin: "Büşra hanım o kadar tatlı, güler yüzlü ve anlayışlı ki sırf terapi niyetine bile gidilir. İşinde çok başarılı, yaptığı işe oldukça hakim. İş yeri hijyen konusunda çok hassaslar. Herkes gönül rahatlığıyla gidebilir.",
-      isim: "Merve K.",
+      isim: "Müge B.",
       hizmet: "Genel Bakım",
       avatar: "M",
     },
     {
       metin: "Uzun zamandır araştırıp sonunda iyi ki burada başlamışım dediğim bir yer oldu. İşlem öncesi detaylı bilgilendirme yapmaları çok güven verdi. Hijyen, ilgi ve profesyonellik açısından gerçekten çok başarılı 🌸 Balıkesir'de gönül rahatlığıyla tercih edilebilecek nadir yerlerden biri 🌸 Hem cihaz kalitesi hem ilgi alakaları gerçekten çok iyi.",
-      isim: "Elif T.",
+      isim: "Özlem D.",
       hizmet: "Lazer Epilasyon",
-      avatar: "E",
+      avatar: "Ö",
     },
   ];
 
@@ -1172,7 +1172,7 @@ export default function Home() {
           <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
             <div className="section-label">Müşteri Yorumları</div>
             <h2 className="section-title">
-              Memnun Müşterilerimiz<br /><em>Anlatıyor</em>
+               Müşterilerimiz<br /><em>Anlatıyor</em>
             </h2>
             <p className="section-desc">
               Her müşterimizin deneyimi bizim için değerlidir. Gerçek yorumlar, gerçek güzellik.
